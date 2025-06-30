@@ -12,40 +12,57 @@
       <div class="cooldiv"></div>
       <h1>Wordle</h1>
       <div class="header-buttons">
-        <button>&#9681;</button>
-        <button>&#63;</button>
-        <button>&#9432;</button>
+        <button onclick="toggleDarkMode()">&#9681;</button>
+        <button onclick="showHint()">&#63;</button>
+        <button onclick="toggleHelp()">&#9432;</button>
       </div>
     </div>
     <div class="main">
-      <div class="row">
-        <div class="letters"></div>
-        <div class="letters"></div>
-        <div class="letters"></div>
-        <div class="letters"></div>
+      <div id="how-to-play">
+        <p><strong>How To Play</strong></p>
+        <ul>
+          <li>Start typing. The letters will appear in the boxes</li>
+          <li>Remove letters with Backspace</li>
+          <li>Hit Enter/Return to submit an answer</li>
+          <li>Letters with green background are in the right spot</li>
+          <li>
+            Letters with yellow background exist in the word, but are in the
+            wrong spot
+          </li>
+          <li>Letters with gray background do not exist in the word</li>
+          <li>If you need a hint, click the ? icon</li>
+        </ul>
       </div>
-      <div class="row">
-        <div class="letters"></div>
-        <div class="letters"></div>
-        <div class="letters"></div>
-        <div class="letters"></div>
-      </div>
-      <div class="row">
-        <div class="letters"></div>
-        <div class="letters"></div>
-        <div class="letters"></div>
-        <div class="letters"></div>
-      </div>
-      <div class="row">
-        <div class="letters"></div>
-        <div class="letters"></div>
-        <div class="letters"></div>
-        <div class="letters"></div>
-      </div>
+      <div class="game">
+        <div class="row">
+          <div class="letters" id="wrong">T</div>
+          <div class="letters" id="misplaced">E</div>
+          <div class="letters" id="correct">S</div>
+          <div class="letters" id="attempt">T</div>
+        </div>
+        <div class="row">
+          <div class="letters"></div>
+          <div class="letters"></div>
+          <div class="letters"></div>
+          <div class="letters"></div>
+        </div>
+        <div class="row">
+          <div class="letters"></div>
+          <div class="letters"></div>
+          <div class="letters"></div>
+          <div class="letters"></div>
+        </div>
+        <div class="row">
+          <div class="letters"></div>
+          <div class="letters"></div>
+          <div class="letters"></div>
+          <div class="letters"></div>
+        </div>
 
-      <button>Start Over</button>
+        <button>Start Over</button>
+      </div>
     </div>
-    <div class="footer">© Jung Park 2025</div>
+    <div class="footer"><p>© Jung Park 2025</p></div>
     <script src="./wordle.js"></script>
   </body>
 </html>
