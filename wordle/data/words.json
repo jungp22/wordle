@@ -1,0 +1,44 @@
+{"statusCode": 200,
+"dictionary": [
+    {
+        "word": "Pain",
+        "hint": "Attending any class other than ENSF 381 gives you ____"
+    },
+    {
+        "word": "Nerd",
+        "hint": "You may be considered one, if you like Star Trek"
+    },
+    {
+        "word": "Fish",
+        "hint": "A type of animal that can swim in water"
+    },
+    {
+        "word": "Book",
+        "hint": "Something you read to learn new things"
+    },
+    {
+        "word": "Door",
+        "hint": "An object that allows entry into a building"
+    },
+    {
+        "word": "Rock",
+        "hint": "A hard material found in nature"
+    },
+    {
+        "word": "Star",
+        "hint": "A celestial object in space"
+    },
+    {
+        "word": "Ball",
+        "hint": "An object used in sports and play"
+    },
+    {
+        "word": "Sand",
+        "hint": "A granular material found at beaches"
+    },
+    {
+        "word": "Moon",
+        "hint": "Earth's natural satellite"
+    }
+]
+}
