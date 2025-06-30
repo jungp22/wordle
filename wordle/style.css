@@ -1,70 +1,97 @@
-
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  display:flex;
+  flex-direction: column;
+  height:100vh;
 }
 
 /* Header */
-.header{
+.header {
   display: flex;
   border-bottom: 2px solid #dfdfdf;
   justify-content: space-between;
 }
-.header h1{
+.header h1 {
   justify-self: left;
-  font-size: 40px;
+  font-size: 24px;
   margin: 10px;
 }
 
-.header .cooldiv{
-  width:239px;
+.header .cooldiv {
+  width: 145px;
 }
 
-.header button{
-  width:76px;
+.header button {
+  width: 48px;
   background-color: white;
   border: none;
   cursor: pointer;
-  height:100%;
+  height: 100%;
   font-size: 20px;
 }
 
-.header button:hover{
-  background-color:#ebebeb;
+.header button:hover {
+  background-color: #ebebeb;
 }
 
 /* Main part*/
-.main{
+.main {
   display: flex;
-  overflow: auto;
-  flex: 10;
+  flex-grow:3;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
-.main .row{
-  display:flex;
+.main .row {
+  display: flex;
   flex-direction: row;
 }
 
-.main .letters{
+.main .letters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bolder;
   border: 3px solid #d3d6da;
-  width:60px;
-  height:60px;
+  width: 60px;
+  height: 60px;
   margin: 5px;
 }
 
-.main button{
-  border:none;
-  background-color: #4CAF50;
-  color:white;
+.main .letters#misplaced {
+  border: 3px solid #c9b458;
+  background-color: #c9b458;
+  color: #ffffff;
+}
+.main .letters#attempt {
+  border: 3px solid #878a8c;
+  color: black;
+}
+.main .letters#wrong {
+  border: 3px solid #787c7e;
+  background-color: #787c7e;
+  color: #ffffff;
+}
+.main .letters#correct {
+  border: 3px solid #6aaa64;
+  background-color: #6aaa64;
+  color: #ffffff;
+}
+
+.main button {
+  border: none;
+  background-color: #4caf50;
+  color: white;
   border-radius: 5px;
-  margin:50px;
+  margin: 50px;
   padding: 10px 20px;
   font-weight: bold;
   cursor: pointer;
 }
 /* Footer */
-.footer{
+.footer {
   border-top: 2px solid #dfdfdf;
   display: flex;
   justify-content: center;
