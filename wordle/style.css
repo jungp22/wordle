@@ -105,13 +105,27 @@ body {
   cursor: pointer;
 }
 
+.game #cooldiv2{
+  display:none;
+  height:58.5px;
+  border:solid 1px black;
+}
+
+.game #hint{
+  display: none;
+  width:100%;
+  background-color: salmon;
+  padding: 20px 0px;
+  justify-content: center;
+}
 /* How To Play */
 #how-to-play{
-  display:flex;
+  display:none;
   flex-direction: column;
   border-right: 2px solid #dfdfdf;
   padding: 50px 0px;
   text-align: left;
+  overflow: scroll;
 }
 
 #how-to-play li,#how-to-play p{
