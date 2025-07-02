@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="header">
-      <div class="cooldiv"></div>
+      <div id="cooldiv"></div>
       <h1>Wordle</h1>
       <div class="header-buttons">
         <button onclick="toggleDarkMode()">&#9681;</button>
@@ -37,10 +37,10 @@
         <div id="cooldiv2" ></div>
 
         <div class="row">
-          <div class="letters" id="wrong">T</div>
-          <div class="letters" id="misplaced">E</div>
-          <div class="letters" id="correct">S</div>
-          <div class="letters" id="attempt">T</div>
+          <div class="letters attempted">t</div>
+          <div class="letters misplaced"></div>
+          <div class="letters wrong"></div>
+          <div class="letters correct"></div>
         </div>
         <div class="row">
           <div class="letters"></div>
@@ -61,7 +61,7 @@
           <div class="letters"></div>
         </div>
 
-        <button>Start Over</button>
+        <button onclick="startOver()">Start Over</button>
         <div id="hint" >Hint: test</div>
       </div>
     </div>

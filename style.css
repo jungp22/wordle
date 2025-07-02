@@ -11,8 +11,6 @@ body {
   display: flex;
   border-bottom: 2px solid #dfdfdf;
   justify-content: space-between;
-
-  /*border-bottom: 3px solid #3a3a3c;*/
 }
 .header h1 {
   cursor: default;
@@ -21,7 +19,7 @@ body {
   margin: 10px;
 }
 
-.header .cooldiv {
+.header #cooldiv {
   width: 145px;
 }
 
@@ -32,9 +30,6 @@ body {
   cursor: pointer;
   height: 100%;
   font-size: 20px;
-  /*
-  background-color : black;
-  color:white;*/
 }
 
 .header button:hover {
@@ -70,25 +65,23 @@ body {
   height: 60px;
   margin: 5px;
   cursor: default;
-
-  /*border: 3px solid #3a3a3c;*/
 }
 
-.game .letters#misplaced {
+.game .letters.misplaced {
   border: 3px solid #c9b458;
   background-color: #c9b458;
   color: #ffffff;
 }
-.game .letters#attempt {
+.game .letters.attempted {
   border: 3px solid #878a8c;
   color: black;
 }
-.game .letters#wrong {
+.game .letters.wrong {
   border: 3px solid #787c7e;
   background-color: #787c7e;
   color: #ffffff;
 }
-.game .letters#correct {
+.game .letters.correct {
   border: 3px solid #6aaa64;
   background-color: #6aaa64;
   color: #ffffff;
@@ -108,7 +101,6 @@ body {
 .game #cooldiv2{
   display:none;
   height:58.5px;
-  border:solid 1px black;
 }
 
 .game #hint{
@@ -138,9 +130,4 @@ body {
   display: flex;
   justify-content: center;
   font-weight: bold;
-}
-.dark-mode {
-  background-color: black;
-  color: white;
-  border-top: 2px solid #3a3a3c;
 }
