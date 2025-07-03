@@ -98,42 +98,47 @@ function keyPressed(event) {
     }
   }
   // Enter
-  else if (word.length === 4 && event.key === "Enter") {
-    //checkAnswer shows the result in an array that shows the corresponding letter's result
-    let result = checkAnswer(word);
-    console.log(result);
+  else if (event.key === "Enter") {
+    if (word.length === 4) {
+      //checkAnswer shows the result in an array that shows the corresponding letter's result
+      let result = checkAnswer(word);
+      console.log(result);
 
-    // this is how that will be displayed in the html
-    for (let x = 0; x < 16; x++) {
-      if (
-        document.getElementsByClassName("letters")[x].id !== "wrong" &&
-        document.getElementsByClassName("letters")[x].id !== "correct" &&
-        document.getElementsByClassName("letters")[x].id !== "misplaced"
-      ) {
-        for (let y = 0; y < 4; y++) {
-          document.getElementsByClassName("letters")[x + y].id = result[y];
+      // this is how that will be displayed in the html
+      for (let x = 0; x < 16; x++) {
+        if (
+          document.getElementsByClassName("letters")[x].id !== "wrong" &&
+          document.getElementsByClassName("letters")[x].id !== "correct" &&
+          document.getElementsByClassName("letters")[x].id !== "misplaced"
+        ) {
+          for (let y = 0; y < 4; y++) {
+            document.getElementsByClassName("letters")[x + y].id = result[y];
+          }
+          break;
         }
-        break;
       }
-    }
 
-    console.log(result.toString());
-    if (result.toString() === "correct,correct,correct,correct") {
-      document.getElementsByClassName("game")[0].innerHTML =
-        '<h1>You Win!</h1><image src="https://res.cloudinary.com/mkf/image/upload/v1675467141/ENSF-381/labs/congrats_fkscna.gif"></image>';
-    } else {
-      if (document.getElementsByClassName("letters")[15].innerHTML !== "") {
-        document.getElementById("answer").innerHTML =
-          'You lost! The answer was "' + correctWord.toLowerCase() + '"!';
-        document.getElementById("cooldiv2").style.display = "flex";
-        document.getElementsByTagName("button")[1].disabled = true;
+      console.log(result.toString());
+      if (result.toString() === "correct,correct,correct,correct") {
+        document.getElementsByClassName("game")[0].innerHTML =
+          '<h1>You Win!</h1><image src="https://res.cloudinary.com/mkf/image/upload/v1675467141/ENSF-381/labs/congrats_fkscna.gif"></image>';
+      } else {
+        if (document.getElementsByClassName("letters")[15].innerHTML !== "") {
+          document.getElementById("answer").innerHTML =
+            'You lost! The answer was "' + correctWord.toLowerCase() + '"!';
+          document.getElementById("cooldiv2").style.display = "flex";
+          document.getElementsByTagName("button")[1].disabled = true;
 
-        document.getElementById("answer").style.display = "flex";
-        document.getElementById("hint").style.display = "none";
+          document.getElementById("answer").style.display = "flex";
+          document.getElementById("hint").style.display = "none";
+        }
       }
+      //this is reset
+      word = [];
     }
-    //this is reset
-    word = [];
+    else{
+      window.alert("First complete the word")
+    }
   }
 }
 
@@ -176,7 +181,7 @@ function startOver() {
     document.getElementsByClassName("letters")[x].innerHTML = "";
   }
   document.getElementById("answer").style.display = "none";
-    document.getElementById("hint").style.display = "none";
+  document.getElementById("hint").style.display = "none";
 
   document.getElementsByTagName("button")[1].disabled = false;
 }
