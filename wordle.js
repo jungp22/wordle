@@ -54,9 +54,13 @@ function showHint() {
   if (document.getElementById("hint").style.display === "flex") {
     document.getElementById("cooldiv2").style.display = "none";
     document.getElementById("hint").style.display = "none";
+
   } else {
     document.getElementById("cooldiv2").style.display = "flex";
     document.getElementById("hint").style.display = "flex";
+    document.getElementById("hint").innerHTML ="Hint: " + correctHint;
+    console.log(correctHint)
+
   }
 }
 
@@ -64,40 +68,63 @@ let word = [];
 document.addEventListener("keydown", keyPressed);
 
 function keyPressed(event) {
+  // if you type in a letter
   if (word.length < 4 && isLetter(event.key)) {
+    //adds to the list
     word.push(event.key.toUpperCase());
 
+    // adding letters to the innerhtml
     for (let x = 0; x < 16; x++) {
       if (document.getElementsByClassName("letters")[x].innerHTML === "") {
-        console.log(x);
         document.getElementsByClassName("letters")[x].innerHTML =
           word[word.length - 1];
         break;
       }
     }
-    console.log(word);
-  } else if (event.key === "Backspace") {
-    word.pop();
-    console.log(word);
-    for (let x = 0; x < 16; x++) {
-      if (document.getElementsByClassName("letters")[x].innerHTML === "" && word.length >=0) {
-        if(word.length !==0){
-          document.getElementsByClassName("letters")[x-1].removeAttribute("id");}
-        document.getElementsByClassName("letters")[x-1].innerHTML ="";
-        break;
+  }
+  // Backspace function
+  else if (event.key === "Backspace") {
+    if (word.length > 0) {
+      // removes letter from list
+      word.pop();
+      console.log(word);
+
+      // removes letter from the html
+      for (let x = 0; x < 16; x++) {
+        // Edge case (last letter)
+        if (x== 15){
+          document.getElementsByClassName("letters")[x].innerHTML = "";
+        }
+        // Normal case
+        else if (document.getElementsByClassName("letters")[x + 1].innerHTML === "") {
+          document.getElementsByClassName("letters")[x].innerHTML = "";
+          break;
+        }
+
       }
     }
-  } else if (word.length === 4 && event.key === "Enter") {
+  }
+  // Enter
+  else if (word.length === 4 && event.key === "Enter") {
+    //checkAnswer shows the result in an array that shows the corresponding letter's result
     let result = checkAnswer(word);
     console.log(result);
+
+    // this is how that will be displayed in the html
     for (let x = 0; x < 16; x++) {
-      if (document.getElementsByClassName("letters")[x].id !== "wrong"&&document.getElementsByClassName("letters")[x].id !== "correct" &&document.getElementsByClassName("letters")[x].id !== "misplaced") {
+      if (
+        document.getElementsByClassName("letters")[x].id !== "wrong" &&
+        document.getElementsByClassName("letters")[x].id !== "correct" &&
+        document.getElementsByClassName("letters")[x].id !== "misplaced"
+      ) {
         for (let y = 0; y < 4; y++) {
           document.getElementsByClassName("letters")[x + y].id = result[y];
         }
         break;
       }
     }
+
+    //this is reset
     word = [];
   }
 }
@@ -111,12 +138,11 @@ function isLetter(letter) {
 }
 function checkAnswer(word) {
   console.log(word);
-  let correctAnswer = "TEST";
   let matches = [];
   let res = ["wrong", "wrong", "wrong", "wrong"];
   for (let x = 0; x < 4; x++) {
     for (let y = 0; y < 4; y++) {
-      if (word[x] === correctAnswer[y]) {
+      if (word[x] === correctWord[y]) {
         if (x === y) {
           res[x] = "correct";
         } else {
@@ -130,7 +156,7 @@ function checkAnswer(word) {
 
   return res;
 }
-test = {
+let test = {
   statusCode: 200,
   dictionary: [
     {
@@ -175,3 +201,6 @@ test = {
     },
   ],
 };
+const rng = Number.parseInt(Math.random() * test.dictionary.length)
+let correctWord = test.dictionary[rng].word.toUpperCase()
+let correctHint = test.dictionary[rng].hint
