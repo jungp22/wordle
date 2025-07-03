@@ -110,6 +110,14 @@ body {
   padding: 20px 0px;
   justify-content: center;
 }
+.game #answer{
+  display: none;
+  width:100%;
+  background-color: rgb(255, 110, 110);
+  color:white;
+  padding: 20px 0px;
+  justify-content: center;
+}
 /* How To Play */
 #how-to-play{
   display:none;

@@ -51,10 +51,9 @@ function toggleHelp() {
 }
 
 function showHint() {
-    document.getElementById("cooldiv2").style.display = "flex";
-    document.getElementById("hint").style.display = "flex";
-    document.getElementById("hint").innerHTML ="Hint: " + correctHint;
-    console.log(correctHint)
+  document.getElementById("cooldiv2").style.display = "flex";
+  document.getElementById("hint").style.display = "flex";
+  document.getElementById("hint").innerHTML = "Hint: " + correctHint;
 }
 
 let word = [];
@@ -85,15 +84,16 @@ function keyPressed(event) {
       // removes letter from the html
       for (let x = 0; x < 16; x++) {
         // Edge case (last letter)
-        if (x== 15){
+        if (x == 15) {
           document.getElementsByClassName("letters")[x].innerHTML = "";
         }
         // Normal case
-        else if (document.getElementsByClassName("letters")[x + 1].innerHTML === "") {
+        else if (
+          document.getElementsByClassName("letters")[x + 1].innerHTML === ""
+        ) {
           document.getElementsByClassName("letters")[x].innerHTML = "";
           break;
         }
-
       }
     }
   }
@@ -116,14 +116,21 @@ function keyPressed(event) {
         break;
       }
     }
-    console.log(result.toString())
-    if(result.toString() === "correct,correct,correct,correct"){
-      console.log("test")
 
-      showHint();
-      document.getElementById("hint").style.backgroundColor ="#6aaa64";
-      document.getElementById("hint").style.color ="white";
-      document.getElementById("hint").innerHTML = "You won!";
+    console.log(result.toString());
+    if (result.toString() === "correct,correct,correct,correct") {
+      document.getElementsByClassName("game")[0].innerHTML =
+        '<h1>You Win!</h1><image src="https://res.cloudinary.com/mkf/image/upload/v1675467141/ENSF-381/labs/congrats_fkscna.gif"></image>';
+    } else {
+      if (document.getElementsByClassName("letters")[15].innerHTML !== "") {
+        document.getElementById("answer").innerHTML =
+          'You lost! The answer was "' + correctWord.toLowerCase() + '"!';
+        document.getElementById("cooldiv2").style.display = "flex";
+        document.getElementsByTagName("button")[1].disabled = true;
+
+        document.getElementById("answer").style.display = "flex";
+        document.getElementById("hint").style.display = "none";
+      }
     }
     //this is reset
     word = [];
@@ -156,6 +163,22 @@ function checkAnswer(word) {
   }
 
   return res;
+}
+
+function startOver() {
+  let rng = Number.parseInt(Math.random() * test.dictionary.length);
+  console.log(rng);
+  correctWord = test.dictionary[rng].word.toUpperCase();
+  correctHint = test.dictionary[rng].hint;
+
+  for (let x = 0; x < 16; x++) {
+    document.getElementsByClassName("letters")[x].removeAttribute("id");
+    document.getElementsByClassName("letters")[x].innerHTML = "";
+  }
+  document.getElementById("answer").style.display = "none";
+    document.getElementById("hint").style.display = "none";
+
+  document.getElementsByTagName("button")[1].disabled = false;
 }
 let test = {
   statusCode: 200,
@@ -202,6 +225,6 @@ let test = {
     },
   ],
 };
-const rng = Number.parseInt(Math.random() * test.dictionary.length)
-let correctWord = test.dictionary[rng].word.toUpperCase()
-let correctHint = test.dictionary[rng].hint
+let rng = Number.parseInt(Math.random() * test.dictionary.length);
+let correctWord = test.dictionary[rng].word.toUpperCase();
+let correctHint = test.dictionary[rng].hint;
