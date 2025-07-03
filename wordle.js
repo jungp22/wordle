@@ -51,17 +51,10 @@ function toggleHelp() {
 }
 
 function showHint() {
-  if (document.getElementById("hint").style.display === "flex") {
-    document.getElementById("cooldiv2").style.display = "none";
-    document.getElementById("hint").style.display = "none";
-
-  } else {
     document.getElementById("cooldiv2").style.display = "flex";
     document.getElementById("hint").style.display = "flex";
     document.getElementById("hint").innerHTML ="Hint: " + correctHint;
     console.log(correctHint)
-
-  }
 }
 
 let word = [];
@@ -123,7 +116,15 @@ function keyPressed(event) {
         break;
       }
     }
+    console.log(result.toString())
+    if(result.toString() === "correct,correct,correct,correct"){
+      console.log("test")
 
+      showHint();
+      document.getElementById("hint").style.backgroundColor ="#6aaa64";
+      document.getElementById("hint").style.color ="white";
+      document.getElementById("hint").innerHTML = "You won!";
+    }
     //this is reset
     word = [];
   }
